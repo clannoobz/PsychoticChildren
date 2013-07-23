@@ -1,10 +1,7 @@
 package pc.main.entity;
 
-import java.awt.Frame;
-
-import javax.swing.JOptionPane;
-
 import pc.main.Game;
+import pc.main.states.Score;
 import pc.main.threads.EnemySpawner;
 
 public class PlayerShip {
@@ -34,6 +31,7 @@ public class PlayerShip {
 				ep.destroy();
 			}
 			Game.GAME.enterState(Game.score);
+			Score.start();
 		}
 	}
 	public static void onCollision(){

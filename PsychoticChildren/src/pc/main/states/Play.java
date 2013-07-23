@@ -208,6 +208,9 @@ public class Play extends BasicGameState{
 			g.drawImage(levelupbackground_Image[LevelUpAnimation.state], 0, 0);
 			g.drawImage(levelup_Image[LevelUpAnimation.state%2], 200, 100);
 		}
+		if(paused){
+			g.drawImage(paused_Image, 200, 250);
+		}
 				
 	}
 

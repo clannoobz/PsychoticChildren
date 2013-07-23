@@ -14,7 +14,10 @@ public class Score extends BasicGameState{
 	public Score(int state) {
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	public static void start(){
+		Game.GAME.getContainer().setMouseGrabbed(false);
+	}
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg)
 			throws SlickException {
