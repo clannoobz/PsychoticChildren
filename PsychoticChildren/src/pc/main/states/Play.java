@@ -2,6 +2,9 @@ package pc.main.states;
 
 
 
+import java.awt.AWTException;
+import java.awt.Robot;
+
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -42,6 +45,7 @@ public class Play extends BasicGameState{
 	static Image bombAni_Image[] = new Image[4];
 	static Image shipShield_Image;
 	
+	static Robot r;
 	Input input;
 	
 	static Color INFO_COLOR = Color.black;
@@ -55,7 +59,11 @@ public class Play extends BasicGameState{
 	}
 	public void init(GameContainer gc, StateBasedGame sbg)
 			throws SlickException {
-		
+		try {
+			r = new Robot();
+		} catch (AWTException e) {
+			e.printStackTrace();
+		}
 	}
 	public static void start(){
 		new PlayerShip(Game.WIDTH/2-25,Game.HEIGHT*5/6-25,50,50);
@@ -219,12 +227,17 @@ public class Play extends BasicGameState{
 		input = gc.getInput();
 		if(input.isKeyPressed(input.KEY_ESCAPE)){
 			if (paused){
-				paused = false;
-				gc.setMouseGrabbed(true);
+				onUnpause();
+				
+				
 			}else{
-				paused = true;
-				gc.setMouseGrabbed(false);
+				onPause();
+			
 			}
+		}
+		if(!paused && !Game.GAME.getContainer().hasFocus()){
+			onPause();
+			
 		}
 	}
 
@@ -246,11 +259,14 @@ public class Play extends BasicGameState{
 	}	
 	
 	public static void onPause(){
-		
+		 Game.GAME.getContainer().setMouseGrabbed(false);
+		 paused = true;
 	}
 	public static void onUnpause(){
+	    Game.GAME.getContainer().setMouseGrabbed(true);
 		PlayerShip.x = Mouse.getX() - PlayerShip.width/2;
 		PlayerShip.y = 600 - Mouse.getY() - PlayerShip.height/2;
+		paused = false;
 	}
 	
 	public int getID() {
