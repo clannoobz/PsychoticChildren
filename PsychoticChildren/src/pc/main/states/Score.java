@@ -28,7 +28,7 @@ public class Score extends BasicGameState{
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g)
 			throws SlickException {
 		g.setColor(Color.white);
-		g.drawString("You score was: " + Game.SCORE, Game.WIDTH/2 - 60, Game.HEIGHT/2 - 4);
+		g.drawString("Your score was: " + Game.SCORE, Game.WIDTH/2 - 60, Game.HEIGHT/2 - 4);
 	}
 
 	@Override

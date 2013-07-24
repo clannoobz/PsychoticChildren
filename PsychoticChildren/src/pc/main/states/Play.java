@@ -180,12 +180,7 @@ public class Play extends BasicGameState{
 			for(Boom b: Boom.booms){
 				g.drawImage(bomb_Image,b.x, b.y);
 			}
-		//Draw Info String
-			if(showInfo){
-				g.setColor(INFO_COLOR);
-				INFO = "Score: " + Game.SCORE + " Lives: " + PlayerShip.LIVES + " Enemies Killed: "+ Game.KILLED +" Level: " + Game.LEVEL + " Time Elapsed: " + ElapsedTime.elapsedtime +" seconds";
-				g.drawString(INFO,5 , 584);
-			}
+		
 		//Projectiles
 			for(Projectile p: Projectile.projectiles){
 				g.drawImage(projectile_Image,(int)p.x, (int)p.y);
@@ -215,6 +210,12 @@ public class Play extends BasicGameState{
 			
 			g.drawImage(levelupbackground_Image[LevelUpAnimation.state], 0, 0);
 			g.drawImage(levelup_Image[LevelUpAnimation.state%2], 200, 100);
+		}
+		//Draw Info String
+		if(showInfo){
+			g.setColor(INFO_COLOR);
+			INFO = "Score: " + Game.SCORE + " Lives: " + PlayerShip.LIVES + " Enemies Killed: "+ Game.KILLED +" Level: " + Game.LEVEL + " Time Elapsed: " + ElapsedTime.elapsedtime +" seconds";
+			g.drawString(INFO,5 , 584);
 		}
 		if(paused){
 			g.drawImage(paused_Image, 200, 250);
@@ -259,14 +260,16 @@ public class Play extends BasicGameState{
 	}	
 	
 	public static void onPause(){
+		paused = true;
 		 Game.GAME.getContainer().setMouseGrabbed(false);
-		 paused = true;
+		 
 	}
 	public static void onUnpause(){
+		paused = false;
 	    Game.GAME.getContainer().setMouseGrabbed(true);
 		PlayerShip.x = Mouse.getX() - PlayerShip.width/2;
 		PlayerShip.y = 600 - Mouse.getY() - PlayerShip.height/2;
-		paused = false;
+		
 	}
 	
 	public int getID() {
