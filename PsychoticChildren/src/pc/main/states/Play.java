@@ -223,7 +223,6 @@ public class Play extends BasicGameState{
 		}
 				
 	}
-
 	public void update(GameContainer gc, StateBasedGame sbg, int delta)
 			throws SlickException {
 		input = gc.getInput();
@@ -242,11 +241,7 @@ public class Play extends BasicGameState{
 			
 		}
 	}
-
-	public static void onLevelUp(){
-		for(Shield s: Shield.shields){
-			s.destroy();
-		}
+	public static void onLevelUp(){	
 		for(Enemy e: Enemy.enemies){
 			e.destroy();
 			Game.addScore(10);
@@ -254,12 +249,8 @@ public class Play extends BasicGameState{
 		for(EnemyProjectile ep: EnemyProjectile.projectiles){
 			ep.destroy();
 		}
-		for(Boom b: Boom.booms){
-			b.destroy();
-		}
 		new LevelUpAnimation().start();
 	}	
-	
 	public static void onPause(){
 		paused = true;
 		 Game.GAME.getContainer().setMouseGrabbed(false);
@@ -272,7 +263,6 @@ public class Play extends BasicGameState{
 		PlayerShip.y = 600 - Mouse.getY() - PlayerShip.height/2;
 		
 	}
-	
 	public int getID() {
 		return 1;
 	}

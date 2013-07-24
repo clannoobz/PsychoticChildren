@@ -68,7 +68,7 @@ public class Enemy {
 			public void run(){
 				try{
 					while(alive){
-						if(alive)
+						if(alive && !Play.paused)
 							new EnemyProjectile(e.x + e.width/2 - 5, e.y+10,0, 1, type);
 						Thread.sleep(projectile_wait_time[type]);			
 					}
