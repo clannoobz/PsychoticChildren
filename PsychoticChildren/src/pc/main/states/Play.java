@@ -137,6 +137,7 @@ public class Play extends BasicGameState{
 		bombAni_Image[2] = new Image("res/FadeoutBomb2.png").getScaledCopy(Game.WIDTH, Game.HEIGHT);
 		bombAni_Image[3] = new Image("res/FadeoutBomb3.png").getScaledCopy(Game.WIDTH, Game.HEIGHT);
 		shipShield_Image = shield_Image.getScaledCopy(PlayerShip.width+8, PlayerShip.height+8);
+		background_Image = new Image("res/background.png");
 		
 		levelup_Image[0].setFilter(Image.FILTER_NEAREST);
 		levelup_Image[1].setFilter(Image.FILTER_NEAREST);
@@ -169,7 +170,7 @@ public class Play extends BasicGameState{
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g)
 			throws SlickException {
 		//Draw Background Image
-		//g.drawImage(background_Image, 0,0, WIDTH, HEIGHT,this);
+		//g.drawImage(background_Image,0,0);
 		g.setColor(Color.lightGray);
 		g.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 		//Shield Powerups
