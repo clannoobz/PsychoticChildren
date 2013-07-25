@@ -54,7 +54,6 @@ public class Game extends StateBasedGame{
 		this.getState(play).init(gc, this);
 		this.getState(score).init(gc, this);
 		gc.setTargetFrameRate(120);
-		this.enterState(menu);
 	}
 
 	public static void addScore(int i) {
